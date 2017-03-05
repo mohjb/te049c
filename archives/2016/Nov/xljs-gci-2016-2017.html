@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test js-xls</title>
+	<script src="jszip.js"></script>
+	<script src="xlsx.js"></script>
+<script>
+	lookup={//code:{
+		"GCI":1,"A":2,"A.01":3
+,"A.01.01":4,"A.01.01.01":5,"1.01":6,"1.02":7,"A.01.01.02":8,"1.03":9,"1.04":10,"1.05":11,"A.01.01.03":12,"1.06":13
+,"1.07":14,"A.01.01.04":15,"1.08":16,"1.09":17,"1.10":18,"1.11":19,"1.12":20,"A.01.01.05":21,"1.13":22,"1.14":23
+,"1.15":24,"1.16":25,"A.01.02":26,"A.01.02.01":27,"1.17":28,"A.01.02.02":29,"1.18":30,"1.19":31,"1.20":32,"1.21":33
+,"A.02":34,"A.02.01":35,"2.01":36,"2.02":37,"2.03":38,"2.04":39,"2.05":40,"2.06":41,"A.02.02":42,"2.07":43,"2.08":44
+,"2.09":45,"A.03":46,"3.01":47,"3.02":48,"3.03":49,"3.04":50,"3.05":51,"A.04":52,"A.04.01":53,"4.02":54,"4.01":55
+,"4.04":56,"4.03":57,"4.06":58,"4.05":59,"4.07":60,"4.08":61,"A.04.02":62,"4.09":63,"4.10":64,"B":65,"B.10":66
+,"B.10.01":67,"10.01":68,"10.03":69,"10.04":70,"B.10.02":71,"10.02":72,"B.05":73,"B.05.01":74,"5.01":75,"5.02":76
+,"B.05.02":77,"5.03":78,"5.04":79,"5.05":80,"5.06":81,"B.05.03":82,"5.07":83,"5.08":84,"B.06":85,"B.06.01":86
+,"B.06.01.01":87,"6.01":88,"6.02":89,"6.03":90,"6.04":91,"6.05":92,"6.06":93,"6.07":94,"6.08":95,"B.06.01.02":96
+,"6.09":97,"6.10":98,"6.11":99,"6.12":100,"6.13":101,"6.14":102,"B.06.02":103,"6.15":104,"6.16":105,"B.07":106
+,"B.07.01":107,"7.01":108,"7.02":109,"7.03":110,"7.04":111,"7.05":112,"B.07.02":113,"7.06":114,"7.07":115,"7.08":116
+,"7.09":117,"7.10":118,"B.08":119,"B.08.01":120,"8.01":121,"8.02":122,"8.03":123,"8.04":124,"8.05":125,"B.08.02":126
+,"8.06":127,"8.07":128,"8.08":129,"B.09":130,"B.09.01":131,"9.01":132,"9.02":133,"9.03":134,"B.09.02":135,"9.04":136
+,"9.05":137,"9.06":138,"9.07":139,"C":140,"C.11":141,"11.01":142,"11.02":143,"11.03":144,"11.04":145,"11.05":146
+,"11.06":147,"11.07":148,"11.08":149,"11.09":150,"C.12":151,"12.01":152,"12.02":153,"12.03":154,"12.04":155
+,"12.05":156,"12.06":157,"12.07":158
+		//}//code,cntry:{
+,"Chile":1
+,"Estonia":2
+,"Finland":3
+,"Korea, Rep.":4
+,"Luxembourg":5
+,"Malaysia":6
+,"Norway":7
+,"Singapore":8
+,"Turkey":9
+,"Bahrain":10
+,"Kuwait":11
+,"Oman":12
+,"Qatar":13
+,"Saudi Arabia":14
+,"United Arab Emirates":15
+//}//cntry
+,2006:1
+,2007:2
+,2008:3
+,2009:4
+,2010:5
+,2011:6
+,2012:7
+,2013:8
+,2014:9
+,2015:10
+,2016:11
+}//lookup
+window.xlsFiles= xlsFiles=['edb','gci']
+
+window.f1=function f1(fn){
+	// set up XMLHttpRequest
+
+	var oReq = new XMLHttpRequest();
+	oReq.open("GET", fn+'.xlsx', true);
+	oReq.responseType = "arraybuffer";
+
+	oReq.onload = function(e) {
+		var arraybuffer = oReq.response;
+
+		// convert data to binary string
+		var data = new Uint8Array(arraybuffer);
+		var arr = new Array();
+		for(var i = 0; i != data.length; ++i)
+			arr[i] = String.fromCharCode(data[i]);
+		var bstr = arr.join("");
+
+		// Call XLSX
+		var workbook = XLSX.read(bstr, {type:"binary"});
+
+		// DO SOMETHING WITH workbook HERE
+		if(!window.xlFiles)
+			window.xlFiles=[]
+		console.log('window.xlFiles[',window.xlFiles.length,']=',workbook);
+		window.xlFiles.push(workbook);
+		//parse xl-workbook
+		var db=parseGCI2017(),o=db.output;o.push(';');
+		document.getElementById('output').innerText=o.join('\n');
+	}
+
+	oReq.send();
+}
+
+function f(){
+	window.xlFiles=[0]//for(var i in xlsFiles)f1(xlsFiles[i]);
+	f1(xlsFiles[1]);
+}
+
+cn=function cn(c,r){
+	var x={c:c,r:r},
+	y=XLSX.utils.encode_cell(x);
+	return y;}
+
+function parseGCI2017(){
+	var sheetName='GCI 2016-2017',str='('
+	,h=xlFiles[1]. Sheets[sheetName]
+	,rng= XLSX.utils.decode_range(h['!ref'])
+	,vid=47315-1,yrId=14,sctrId=1,yr=2017
+	,output=[
+		,'insert into years values (',yrId,',',yr,',now(),now());'
+		,'insert into variables values ']
+	,db={data:{},output:output}
+	;
+	for(var row=rng.s.r+2;row<=rng.e.r;row++)
+	{var code=h[cn(0,row)];if(code)
+		{var indId=lookup[code=code.w];if(!indId)
+			{var x=h[cn(0,row)];	if(code.endsWith('.1') )//&& h[cn(0,row-1)].w.endsWith('9')
+				{indId=lookup[code+='0'];
+					if(!indId)
+						console.error('parseGCI2017:indiCode=',code,x,' , ID not found , at row=',row,' ,coll=',col);
+				}else
+				console.error('parseGCI2017:indiCode=',code,' , ID not found , at row=',row,' ,coll=',col);
+			}if(indId){
+			var dbInd=db.data[code],dbCntry,dbYr;
+			if(!dbInd)
+				dbInd=db.data[code]={};
+			for(var col=2//rng.s.c
+				;col<=rng.e.c;col+=2)
+			{	var cntry=h[cn(col,0)]
+				,vr =[h[cn(col,1  )],h[cn(col+1,1  )]]
+				,val=[h[cn(col,row)],h[cn(col+1,row)]];
+				if(cntry)cntry=cntry.v
+					dbCntry=dbInd[cntry]
+				var cntryId=lookup[cntry];if(!cntryId)
+					console.error('parseGCI2017:cntry=',cntry,' ID not found , at indiCode=',code,' ,row=',row,' ,coll=',col);
+				if(!dbCntry)
+					dbCntry=dbInd[cntry]={}
+				dbYr=dbCntry[yr]
+				if(!dbYr)
+					dbYr=dbCntry[yr]={};
+
+				if(vr[0])vr[0]=vr[0].v
+				if(vr[1])vr[1]=vr[1].v
+				if(val[0])val[0]=val[0].v
+				if(val[1])val[1]=val[1].v
+				if(code && cntry && val[0]!=undefined && val[1]!=undefined)//&& vr[0] && vr[1]
+				{	dbYr[vr[0]]=parseInt(val[0]);
+					dbYr[vr[1]]=parseFloat(val[1])
+					var b=[isNaN(dbYr[vr[0]]),isNaN(dbYr[vr[1]])];
+					if(!b[0] || !b[1])
+					{output.push([str,++vid
+						,',',b[0]?'null':dbYr[vr[0]]
+						,',',b[1]?'null':dbYr[vr[1]]
+						,',now(),now(),',indId,',',cntryId,',',yrId
+								  ,') -- ',code ,',', cntry ,',', yr].join(''));
+						str=',(';
+					}
+				}//if(code && vr)
+			}}//for col
+		}//if(code)
+	}//for row
+ return db;
+}//parseGCI2017
+
+String.prototype.endsWith=function StringEndsWith(p){
+	var b,s,nt=this.length,np=!p?-1:p.length;
+	if(nt<np || np==-1)
+		return false;
+	s=this.substring(nt-np);
+	b= s==p;
+	return b;}
+
+</script>
+</head>
+<body onkeydown="document.getElementById('div').style.display='block'"><div id="div" style="block:block">
+	<button onclick="f()">test SheetJS</button>
+	<button onclick="document.getElementById('div').style.display='none'">x</button>
+</div>
+<pre id="output"></pre>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test js-xls</title>
+	<script src="jszip.js"></script>
+	<script src="xlsx.js"></script>
+<script>
+	lookup={
+,"Chile":1
+,"Estonia":2
+,"Finland":3
+,"Korea, Rep.":4
+,"Luxembourg":5
+,"Malaysia":6
+,"Norway":7
+,"Singapore":8
+,"Turkey":9
+,"Bahrain":10
+,"Kuwait":11
+,"Oman":12
+,"Qatar":13
+,"Saudi Arabia":14
+,"United Arab Emirates":15
+,2006:1
+,2007:2
+,2008:3
+,2009:4
+,2010:5
+,2011:6
+,2012:7
+,2013:8
+,2014:9
+,2015:10
+,2016:11
+}//lookup
+window.xlsFiles= xlsFiles=['edb']
+
+window.f1=function f1(fn){
+	// set up XMLHttpRequest
+
+	var oReq = new XMLHttpRequest();
+	oReq.open("GET", fn+'.xlsx', true);
+	oReq.responseType = "arraybuffer";
+
+	oReq.onload = function(e) {
+		var arraybuffer = oReq.response;
+
+		// convert data to binary string
+		var data = new Uint8Array(arraybuffer);
+		var arr = new Array();
+		for(var i = 0; i != data.length; ++i)
+			arr[i] = String.fromCharCode(data[i]);
+		var bstr = arr.join("");
+
+		// Call XLSX
+		var workbook = XLSX.read(bstr, {type:"binary"});
+
+		// DO SOMETHING WITH workbook HERE
+		if(!window.xlFiles)
+			window.xlFiles=[]
+		console.log('window.xlFiles[',window.xlFiles.length,']=',workbook);
+		window.xlFiles.push(workbook);
+		//parse xl-workbook
+		var db=parse2017(),o=db.output;o.push(';');
+		document.getElementById('output').innerText=o.join('\n');
+	}
+
+	oReq.send();
+}
+
+function f(){
+	window.xlFiles=[0]//for(var i in xlsFiles)f1(xlsFiles[i]);
+	f1(xlsFiles[0]);
+}
+
+cn=function cn(c,r){
+	var x={c:c,r:r},
+	y=XLSX.utils.encode_cell(x);
+	return y;}
+
+function findSheet(str){
+	var x=xlFiles[1]. Sheets;
+	for(var sheetName in x)
+	if(sheetName.indexOf(str)!=-1)
+		return x[sheetName]
+}
+
+function parse2017(){
+	var str='('
+	,h=findSheet('2017')
+	,rng= XLSX.utils.decode_range(h['!ref'])
+	,vid=47315-1,yrId=11,sctrId=1,yr=2017
+	,output=['insert into variables values ']
+	,db={data:{},output:output}
+	;
+	for(var row=rng.s.r+2;row<=rng.e.r;row++)
+	{var code=h[cn(0,row)];if(code)
+		{var indId=lookup[code=code.w];if(!indId)
+			{var x=h[cn(0,row)];	if(code.endsWith('.1') )//&& h[cn(0,row-1)].w.endsWith('9')
+				{indId=lookup[code+='0'];
+					if(!indId)
+						console.error('parse2017:indiCode=',code,x,' , ID not found , at row=',row,' ,coll=',col);
+				}else
+				console.error('parse2017:indiCode=',code,' , ID not found , at row=',row,' ,coll=',col);
+			}if(indId){
+			var dbInd=db.data[code],dbCntry,dbYr;
+			if(!dbInd)
+				dbInd=db.data[code]={};
+			for(var col=2//rng.s.c
+				;col<=rng.e.c;col+=2)
+			{	var cntry=h[cn(col,0)]
+				,vr =[h[cn(col,1  )],h[cn(col+1,1  )]]
+				,val=[h[cn(col,row)],h[cn(col+1,row)]];
+				if(cntry)cntry=cntry.v
+					dbCntry=dbInd[cntry]
+				var cntryId=lookup[cntry];if(!cntryId)
+					console.error('parseGCI2017:cntry=',cntry,' ID not found , at indiCode=',code,' ,row=',row,' ,coll=',col);
+				if(!dbCntry)
+					dbCntry=dbInd[cntry]={}
+				dbYr=dbCntry[yr]
+				if(!dbYr)
+					dbYr=dbCntry[yr]={};
+
+				if(vr[0])vr[0]=vr[0].v
+				if(vr[1])vr[1]=vr[1].v
+				if(val[0])val[0]=val[0].v
+				if(val[1])val[1]=val[1].v
+				if(code && cntry && val[0]!=undefined && val[1]!=undefined)//&& vr[0] && vr[1]
+				{	dbYr[vr[0]]=parseInt(val[0]);
+					dbYr[vr[1]]=parseFloat(val[1])
+					var b=[isNaN(dbYr[vr[0]]),isNaN(dbYr[vr[1]])];
+					if(!b[0] || !b[1])
+					{output.push([str,++vid
+						,',',b[0]?'null':dbYr[vr[0]]
+						,',',b[1]?'null':dbYr[vr[1]]
+						,',now(),now(),',indId,',',cntryId,',',yrId
+								  ,') -- ',code ,',', cntry ,',', yr].join(''));
+						str=',(';
+					}
+				}//if(code && vr)
+			}}//for col
+		}//if(code)
+	}//for row
+ return db;
+}//parse2017
+
+String.prototype.endsWith=function StringEndsWith(p){
+	var b,s,nt=this.length,np=!p?-1:p.length;
+	if(nt<np || np==-1)
+		return false;
+	s=this.substring(nt-np);
+	b= s==p;
+	return b;}
+
+</script>
+</head>
+<body onkeydown="document.getElementById('div').style.display='block'"><div id="div" style="block:block">
+	<button onclick="f()">test SheetJS</button>
+	<button onclick="document.getElementById('div').style.display='none'">x</button>
+</div>
+<pre id="output"></pre>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<html lang="en-KW">
+<head>
+<style>
+td{padding:15px; border:1px solid black; border-radius:0px; }
+x-table{border:1px solid black; border-radius:10px; }
+
+.stylDiv{
+border:1px solid black;
+background:#f4faff;
+border-radius:0px;
+float:left;
+}
+.stylLI{
+margin:5px;
+padding:5px;
+line-height:12px;
+}
+</style>
+<script type="text/javascript" src="d3.v3.m.js"></script>
+<script type="text/javascript" src="sys.js"></script>
+<link href="nv.d3.css" rel="stylesheet" type="text/css">
+<script src="nv.d3.js"></script>
+<script>
+
+f=function f(){
+	var rows=document.getElementById('x').value.split('\n')
+	,a=[],row
+	for(row=0;row<rows.length;row++)
+		a[row]=rows[row].split('\t');
+	document.getElementById('out').value=JSON.stringify(a);
+}//function f
+
+
+db={//levels: Sector , Indicators , Country , Year , Rank/Value
+
+sectors:{}//sectors
+
+,dbLvls:['indi','cntry','yr','vars']//'sectr',
+
+}//db
+
+window.xls=
+xls={}
+
+
+</script>
+
+
+<script src="xls.corruption.js"></script>
+<script src="xls.economicFreedom.js"></script>
+<script src="xls.edb.js"></script>
+<script src="xls.gci.js"></script>
+<script src="xls.HumanDevelopment.js"></script>
+<script src="xls.Prosperity.js"></script>
+<script src="xls.WorldHappiness.js"></script>
+</head>
+<body ><span style="display:none">
+	tsv:
+	<textarea id="x"></textarea><hr/>
+	<input type="button" value="convert" onclick="f()"/>
+	out:
+	<textarea id="out"></textarea><hr/></span>
+	
+	
+	<div id="GCI.lookups"></div>
+	<button onclick="sys.clkQuery(event)">query</button>
+	<input type="checkbox" id="autoQuery"/><label for="autoQuery">Auto Query</label>
+	<br/><span id="filterHistory"></span><hr/>
+	<div id="GCI.output"></div>
+	<script>
+			xls.gci.meta.convert(xls.gci,db.sectors.gci)
+			/*for(var i in xls.gci)
+				sys.cc('GCI Data-Sheet '+i
+					,sys.did('gciContent')
+					,sys.bldTbl({
+						 a:{border:1}
+						,c:xls.gci[i].a || xls.gci[i].b
+						}
+					)
+					,'float:left'
+				)*/
+			sys.bldLists('GCI',db.sectors.gci.lookup)
+	</script>
+
+</body>
+</html>

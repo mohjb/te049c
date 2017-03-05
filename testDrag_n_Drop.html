@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.droppable{
+width:68px; height:6px;
+border:1px solid black;
+text-align:center;
+    
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.draggable{
+width:58px; height:24px;
+
+border: 1px solid rgb(102, 153, 102); padding: 6px 0px; text-align: center;  border-radius: 8px; box-shadow: rgb(102, 102, 102) 2px 2px 7px; background: linear-gradient(rgb(238, 255, 153), rgb(102, 238, 51));
+
+}
+</style>
+<script>
+function allowDrop(ev) {
+
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+function getFormat(){var r=[],p,x;
+	for(var i =1;i<=4;i++){
+		p=document.getElementById('div'+i)
+		x=p.firstElementChild
+		r.push(x.id);}
+	return r;
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text")
+	,dropBase=ev.target.nodeName=='SPAN'?ev.target.parentNode:ev.target
+	,dropee=document.getElementById(data)
+	,base0=dropee.parentNode
+	,d0=dropBase.firstElementChild
+	base0.appendChild(d0)
+    dropBase.appendChild(dropee);
+	console.log(getFormat());
+}
+</script>
+</head>
+<body>
+Heading 1
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"  class="droppable">
+<span id="indi" draggable="true" ondragstart="drag(event)" class="draggable" >Indicator</span>
+</div><hr/>
+Heading 2
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" class="droppable">
+<span id="vars" draggable="true" ondragstart="drag(event)" class="draggable" >Variable</span>
+</div><hr/>
+Table Rows
+<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" class="droppable">
+<span id="cntry" draggable="true" ondragstart="drag(event)" class="draggable" >Country</span>
+</div><hr/>
+Table Columns
+<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" class="droppable">
+<span id="yr" draggable="true" ondragstart="drag(event)"  class="draggable">Year</span>
+</div><hr/>
+
+
+</body>
+</html>

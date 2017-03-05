@@ -1,0 +1,375 @@
+<html lang="en-KW">
+<head>
+<style>
+td{padding:15px; border:1px solid black; border-radius:5px; }
+x-table{border:1px solid black; border-radius:10px; }
+
+.stylDiv{
+border:1px solid blue;
+background:#e0e0ff;
+border-radius:15px; 
+float:left;
+}
+.stylLI{
+margin:5px;
+padding:5px;
+line-height:12px;
+}
+.tabs {
+  position: relative;   
+  min-height: 200px; /* This part sucks */
+  clear: both;
+  margin: 25px 0;
+}
+.tab {
+  float: left;
+}
+.tab label {
+  background: #eee; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  margin-left: -1px; 
+  position: relative;
+  left: 1px; 
+}
+.tab [type=radio] {
+  display: none;   
+}
+.content {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: 1px solid #ccc; 
+}
+.tab [type=radio]:checked ~ label {
+  background: white;
+  border-bottom: 1px solid white;
+  z-index: 2;
+}
+.tab [type=radio]:checked ~ label ~ .content {
+  z-index: 1;
+}
+
+
+
+.tabs2 {
+  x-position: relative;   
+  min-height: 200px; /* This part sucks */
+  clear: both;
+  margin: 25px 0;
+}
+.tab2 {
+  float: left;
+}
+.tab2 label {
+  background: #eee; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  margin-left: -1px; 
+  position: relative;
+  left: 1px; 
+}
+.tab2 [type=radio] {
+  display: none;   
+}
+.tab2 [type=radio]:checked ~ label {
+  background: white;
+  border-bottom: 1px solid white;
+  z-index: 12;
+}
+.tab2 [type=radio]:checked ~ label ~ .content2 {
+  z-index: 11;
+}
+.content2 {
+ // -- * # x-position: absolute;
+  position: relative;
+  top: 28px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: 1px solid #ccc; 
+}
+</style>
+<script type="text/javascript" src="canvas.js"></script>
+<script type="text/javascript" src="sys.js"></script>
+<script>
+
+f=function f(){
+	var rows=document.getElementById('x').value.split('\n')
+	,a=[],row
+	for(row=0;row<rows.length;row++)
+		a[row]=rows[row].split('\t');
+	document.getElementById('out').value=JSON.stringify(a);
+}//function f
+
+
+db={//levels: Sector , Indicators , Country , Year , Rank/Value
+//lookup:{sector:[],indicator:[] , country:[] , year:[] , cat:['Rank','Value']},
+sectors:{}//sectors
+//,keys:function keys(o){var a=[];for(var k in o)a.push(k);return a;}
+
+,dbLvls:['indi','cntry','yr','vars']//'sectr',
+
+}//db
+
+window.xls=
+xls={}
+
+xls.regions={
+//dom-build tabs-gui , for sectors
+ //dom-build prms: sectors/xls-files , sheets , regions
+ //dom-build tree of indicators
+//dom-build addition-list, for collection of user defined input-set of parameters 
+
+bldRegion:function xlsRegionBld(p,reg)
+{
+}//xls.regions.bld
+//bldSheet
+}//xls.regions
+
+</script>
+
+
+<script src="xls.corruption.js"></script>
+<script src="xls.economicFreedom.js"></script>
+<script src="xls.edb.js"></script>
+<script src="xls.gci.js"></script>
+<script src="xls.HumanDevelopment.js"></script>
+<script src="xls.Prosperity.js"></script>
+<script src="xls.WorldHappiness.js"></script>
+
+</head>
+<body >
+<div class="tabs" style="height:100%;width:100%">
+
+   <div class="tab">
+       <input type="radio" id="tab-2" name="tab-group-1" checked>
+       <label for="tab-2">GCI</label>
+       
+       <div class="content" id="gciContent">
+		<div id="GCI.lookups"></div>
+		<button onclick="sys.clkQuery(event)">query</button>
+		<input type="checkbox" id="autoQuery"/><label for="autoQuery">Auto Query</label>
+		<br/><span id="filterHistory"></span><hr/>
+		<div id="GCI.output"></div>
+		<script>
+			xls.gci.meta.convert(xls.gci,db.sectors.gci)
+			/*for(var i in xls.gci)
+				sys.cc('GCI Data-Sheet '+i
+					,sys.did('gciContent')
+					,sys.bldTbl({
+						 a:{border:1}
+						,c:xls.gci[i].a || xls.gci[i].b
+						}
+					)
+					,'float:left'
+				)*/
+			sys.bldLists('GCI',db.sectors.gci.lookup)
+		</script>
+		</div> 
+	</div>
+
+	<div class="tab">
+		<input type="radio" id="tab-3" name="tab-group-1">
+		<label for="tab-3">EDB</label>
+
+		<div class="content">
+			EDB under-construction
+		</div> 
+	</div>
+
+	<div class="tab">
+		<input type="radio" id="tab-4" name="tab-group-1">
+		<label for="tab-4">Corruption</label>
+		<div class="content">
+			Corruption under-construction
+		</div> 
+	</div>
+
+	<div class="tab">
+		<input type="radio" id="tab-5" name="tab-group-1">
+		<label for="tab-5">Economic Freedom</label>
+		<div class="content">
+			Economic Freedom under-construction
+		</div> 
+	</div>
+
+	<div class="tab">
+		<input type="radio" id="tab-6" name="tab-group-1">
+		<label for="tab-6">Human Development</label>
+		<div class="content">
+			Human Development under-construction
+		</div> 
+	</div>
+
+	<div class="tab">
+		<input type="radio" id="tab-7" name="tab-group-1">
+		<label for="tab-7">Prosperity</label>
+		<div class="content">
+			Prosperity under-construction
+		</div> 
+	</div>
+
+	<div class="tab">
+		<input type="radio" id="tab-8" name="tab-group-1">
+		<label for="tab-8">World Happiness</label>
+		<div class="content">
+			World Happiness under-construction
+		</div> 
+	</div>
+
+
+	<div class="tab" style="display:none">
+		<input type="radio" id="tab-1" name="tab-group-1" >
+		<label for="tab-1">System-Utilities</label>
+		<div class="content">
+			
+			<div class="tabs2" style="height:50%;width:50%;">
+				<div class="tab2">
+					<input type="radio" id="tab-1-1" name="tab-group-1-1" checked>
+					<label for="tab-1-1">Convert Excel Sheet to 2-dimensional JSON</label>
+					<div class="content2">
+						Converting text(from the clipboard, from a spreadsheet) into 2-dimensional json-array<br/>
+			source-text:<textarea id="x" ></textarea>
+			<br/><input value="convert" type="button" onclick="f()"/><br/>
+			<hr/>
+			output:<textarea id="out"></textarea>
+			
+					</div>
+				</div>
+				<div class="tab2">
+					<input type="radio" id="tab-1-2" name="tab-group-1-1" >
+					<label for="tab-1-2">Chart Test</label>
+       <!--div class="content2">
+             <script type="text/javascript">
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {      
+        title:{
+            text: "Annual Expenses"
+        },
+        animationEnabled: true,
+        axisY :{
+            includeZero: false,
+            prefix: "$ "
+        },
+        toolTip: {
+            shared: true,
+            content: "<span style='\"'color: {color};'\"'><strong>{name}</strong></span> <span style='\"'color: dimgrey;'\"'>${y}</span> "
+        },
+        legend: {
+            fontSize: 13
+        },
+        data: [
+        {        
+            type: "splineArea", 
+            showInLegend: true,
+            name: "Salaries",
+            color: "rgba(54,158,173,.6)",
+            dataPoints: [
+            {x: new Date(2012, 2), y: 30000},
+            {x: new Date(2012, 3), y: 35000},
+            {x: new Date(2012, 4), y: 30000},
+            {x: new Date(2012, 5), y: 30400},
+            {x: new Date(2012, 6), y: 20900},
+            {x: new Date(2012, 7), y: 31000},
+            {x: new Date(2012, 8), y: 30200},
+            {x: new Date(2012, 9), y: 30000},
+            {x: new Date(2012, 10), y: 33000},
+            {x: new Date(2012, 11), y: 38000},
+            {x: new Date(2013, 0),  y: 38900},
+            {x: new Date(2013, 1),  y: 39000}
+
+            ]
+        },
+        {        
+            type: "splineArea", 
+            showInLegend: true,
+            name: "Office Cost",        
+            color: "rgba(134,180,2,.7)",
+            dataPoints: [
+            {x: new Date(2012, 2), y: 20100},
+            {x: new Date(2012, 3), y: 16000},
+            {x: new Date(2012, 4), y: 14000},
+            {x: new Date(2012, 5), y: 18000},
+            {x: new Date(2012, 6), y: 18000},
+            {x: new Date(2012, 7), y: 21000},
+            {x: new Date(2012, 8), y: 22000},
+            {x: new Date(2012, 9), y: 25000},
+            {x: new Date(2012, 10), y: 23000},
+            {x: new Date(2012, 11), y: 25000},
+            {x: new Date(2013, 0), y: 26000},
+            {x: new Date(2013, 1), y: 25000}
+
+            ]
+        },
+        {        
+            type: "splineArea", 
+            showInLegend: true,
+            name: "Entertainment",
+            color: "rgba(194,70,66,.6)",        
+            dataPoints: [
+            {x: new Date(2012, 2), y: 10100},
+            {x: new Date(2012, 3), y: 6000},
+            {x: new Date(2012, 4), y: 3400},
+            {x: new Date(2012, 5), y: 4000},
+            {x: new Date(2012, 6), y: 9000},
+            {x: new Date(2012, 7), y: 3900},
+            {x: new Date(2012, 8), y: 4200},
+            {x: new Date(2012, 9), y: 5000},
+            {x: new Date(2012, 10), y: 14300},
+            {x: new Date(2012, 11), y: 12300},
+            {x: new Date(2013, 0), y: 8300},
+            {x: new Date(2013, 1), y: 6300}
+
+            ]
+        },
+        {        
+            type: "splineArea", 
+            showInLegend: true,
+            color: "rgba(127,96,132,.6)",        
+            name: "Maintenance",
+            dataPoints: [
+            {x: new Date(2012, 2), y: 1700},
+            {x: new Date(2012, 3), y: 2600},
+            {x: new Date(2012, 4), y: 1000},
+            {x: new Date(2012, 5), y: 1400},
+            {x: new Date(2012, 6), y: 900},
+            {x: new Date(2012, 7), y: 1000},
+            {x: new Date(2012, 8), y: 1200},
+            {x: new Date(2012, 9), y: 5000},
+            {x: new Date(2012, 10), y: 1300},
+            {x: new Date(2012, 11), y: 2300},
+            {x: new Date(2013, 0), y: 2800},
+            {x: new Date(2013, 1), y: 1300}
+
+            ]
+        }      
+
+        ]
+    });
+
+chart.render();
+}
+</script>
+<script type="text/javascript" src="canvas.js"></script>
+
+  <div id="chartContainer" style="height: 300px; width: 100%;">
+  </div -->
+
+       </div> 
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+</body>
+</html>

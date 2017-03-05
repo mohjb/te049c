@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Quick report</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+      body {  font-family: verdana, helvetica, sans-serif; margin: 0px; padding: 0; }
+      h1 { font-weight: bold; font-size: 150%; border-bottom-style: solid; border-bottom-width: 2px; margin-top: 0px; padding-bottom: 0.5ex; color: #eeeeee; overflow: hidden; text-overflow: ellipsis; }
+      h2 { font-size: 130%; padding-bottom: 0.5ex; color: #009ACE; border-bottom-style: solid; border-bottom-width: 2px; }
+      h3 { font-size: 110%; padding-bottom: 0.5ex; color: #000000; }
+      th { text-align: left; background-color: #009ACE; color: #eeeeee; }
+      #ReportHeader { padding: 10px; background-color: #009ACE; color: #eeeeee; border-bottom-style: solid; border-bottom-width: 2px; border-color: #999999; }
+      #ReportHeader th { width: 25%; white-space: nowrap; vertical-align: top; }
+      #ReportHeader td { vertical-align: top; color: #eeeeee; }
+      #ReportNotes { padding: 10px; background-color: #eeeeee; font-size: 80%; border-bottom-style: solid; border-bottom-width: 2px; border-color: #999999; }
+      .ReportSQL { margin-bottom: 10px; padding: 10px; display: block; background-color: #eeeeee; font-family: monospace; }
+      #ReportDetails { margin-left: 10px; margin-right: 10px; margin-bottom: 10px; }
+      #ReportDetails td, th { font-size: 80%; margin-left: 2px; margin-right: 2px; }
+      #ReportDetails th { border-bottom-color: #777777; border-bottom-style: solid; border-bottom-width: 2px; }
+      .ReportDetailsOddDataRow { background-color: #dddddd; }
+      .ReportDetailsEvenDataRow { background-color: #eeeeee; }
+      .ReportTableHeaderCell { background-color: #dddddd; color: #009ACE; vertical-align: top; font-size: 80%; white-space: nowrap; }
+      .ReportTableValueCell { vertical-align: top; font-size: 80%; white-space: nowrap; }
+      .ReportTableInfo { font-size: 80%; font-style: italic; }
+      #ReportFooter { font-weight: bold; font-size: 80%; text-align: right; background-color: #009ACE; color: #eeeeee; margin-top: 10px; padding: 2px; border-bottom-style: solid; border-bottom-width: 2px; border-top-style: solid; border-top-width: 2px; border-color: #999999; }
+      #ReportFooter a { color: #ffffff; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <div id="ReportHeader"><h1>Quick report</h1><b>Generated: </b>26/01/2017 8:00:10 PM<br /><b>Database: </b>kdipa on postgres@localhost:5432<br /></div>
+    <div id="ReportDetails">
+      <h2>Query results</h2>
+      <div style="overflow:auto;">
+        <table>
+          <tr>
+            <th class="ReportTableHeaderCell" width="12.5%">id</th>
+            <th class="ReportTableHeaderCell" width="12.5%">rank</th>
+            <th class="ReportTableHeaderCell" width="12.5%">value</th>
+            <th class="ReportTableHeaderCell" width="12.5%">createdAt</th>
+            <th class="ReportTableHeaderCell" width="12.5%">updatedAt</th>
+            <th class="ReportTableHeaderCell" width="12.5%">countryId</th>
+            <th class="ReportTableHeaderCell" width="12.5%">indexId</th>
+            <th class="ReportTableHeaderCell" width="12.5%">yearId</th>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21929</td>
+            <td class="ReportTableValueCell">24</td>
+            <td class="ReportTableValueCell">6.7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21930</td>
+            <td class="ReportTableValueCell">28</td>
+            <td class="ReportTableValueCell">6.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21931</td>
+            <td class="ReportTableValueCell">27</td>
+            <td class="ReportTableValueCell">6.6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21932</td>
+            <td class="ReportTableValueCell">27</td>
+            <td class="ReportTableValueCell">6.6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21933</td>
+            <td class="ReportTableValueCell">26</td>
+            <td class="ReportTableValueCell">6.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21934</td>
+            <td class="ReportTableValueCell">29</td>
+            <td class="ReportTableValueCell">6.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21935</td>
+            <td class="ReportTableValueCell">32</td>
+            <td class="ReportTableValueCell">64</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21936</td>
+            <td class="ReportTableValueCell">28</td>
+            <td class="ReportTableValueCell">68</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21937</td>
+            <td class="ReportTableValueCell">26</td>
+            <td class="ReportTableValueCell">69</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21938</td>
+            <td class="ReportTableValueCell">23</td>
+            <td class="ReportTableValueCell">70</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21939</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">9.6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21940</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">9.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21941</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21942</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">8.9</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21943</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">9.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21944</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">9.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21945</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">90</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21946</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">89</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21947</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">89</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21948</td>
+            <td class="ReportTableValueCell">2</td>
+            <td class="ReportTableValueCell">90</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21949</td>
+            <td class="ReportTableValueCell">42</td>
+            <td class="ReportTableValueCell">5.1</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21950</td>
+            <td class="ReportTableValueCell">43</td>
+            <td class="ReportTableValueCell">5.1</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21951</td>
+            <td class="ReportTableValueCell">40</td>
+            <td class="ReportTableValueCell">5.6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21952</td>
+            <td class="ReportTableValueCell">39</td>
+            <td class="ReportTableValueCell">5.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21953</td>
+            <td class="ReportTableValueCell">39</td>
+            <td class="ReportTableValueCell">5.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21954</td>
+            <td class="ReportTableValueCell">43</td>
+            <td class="ReportTableValueCell">5.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21955</td>
+            <td class="ReportTableValueCell">45</td>
+            <td class="ReportTableValueCell">56</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21956</td>
+            <td class="ReportTableValueCell">46</td>
+            <td class="ReportTableValueCell">55</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21957</td>
+            <td class="ReportTableValueCell">43</td>
+            <td class="ReportTableValueCell">55</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21958</td>
+            <td class="ReportTableValueCell">37</td>
+            <td class="ReportTableValueCell">56</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21959</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">8.6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21960</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">8.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21961</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">8.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21962</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">8.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21963</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">8.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21964</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">8.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21965</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">80</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21966</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">80</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21967</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">82</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21968</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">81</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21969</td>
+            <td class="ReportTableValueCell">44</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21970</td>
+            <td class="ReportTableValueCell">43</td>
+            <td class="ReportTableValueCell">5.1</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21971</td>
+            <td class="ReportTableValueCell">47</td>
+            <td class="ReportTableValueCell">5.1</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21972</td>
+            <td class="ReportTableValueCell">56</td>
+            <td class="ReportTableValueCell">4.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21973</td>
+            <td class="ReportTableValueCell">56</td>
+            <td class="ReportTableValueCell">4.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21974</td>
+            <td class="ReportTableValueCell">60</td>
+            <td class="ReportTableValueCell">4.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21975</td>
+            <td class="ReportTableValueCell">54</td>
+            <td class="ReportTableValueCell">49</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21976</td>
+            <td class="ReportTableValueCell">53</td>
+            <td class="ReportTableValueCell">50</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21977</td>
+            <td class="ReportTableValueCell">50</td>
+            <td class="ReportTableValueCell">52</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21978</td>
+            <td class="ReportTableValueCell">54</td>
+            <td class="ReportTableValueCell">50</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21979</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">8.8</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21980</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">8.7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21981</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">7.9</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21982</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">8.6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21983</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">8.6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21984</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21985</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">85</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21986</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">86</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21987</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">86</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21988</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">87</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21989</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">9.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21990</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">9.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21991</td>
+            <td class="ReportTableValueCell">4</td>
+            <td class="ReportTableValueCell">9.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21992</td>
+            <td class="ReportTableValueCell">3</td>
+            <td class="ReportTableValueCell">9.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21993</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">9.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21994</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">9.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21995</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">87</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21996</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">86</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21997</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">84</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21998</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">85</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">8</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21999</td>
+            <td class="ReportTableValueCell">60</td>
+            <td class="ReportTableValueCell">3.8</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22000</td>
+            <td class="ReportTableValueCell">64</td>
+            <td class="ReportTableValueCell">4.1</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22001</td>
+            <td class="ReportTableValueCell">58</td>
+            <td class="ReportTableValueCell">4.6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22002</td>
+            <td class="ReportTableValueCell">61</td>
+            <td class="ReportTableValueCell">4.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22003</td>
+            <td class="ReportTableValueCell">56</td>
+            <td class="ReportTableValueCell">4.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22004</td>
+            <td class="ReportTableValueCell">61</td>
+            <td class="ReportTableValueCell">4.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22005</td>
+            <td class="ReportTableValueCell">54</td>
+            <td class="ReportTableValueCell">49</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22006</td>
+            <td class="ReportTableValueCell">53</td>
+            <td class="ReportTableValueCell">50</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22007</td>
+            <td class="ReportTableValueCell">64</td>
+            <td class="ReportTableValueCell">45</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22008</td>
+            <td class="ReportTableValueCell">66</td>
+            <td class="ReportTableValueCell">42</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">9</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22019</td>
+            <td class="ReportTableValueCell">36</td>
+            <td class="ReportTableValueCell">5.7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22020</td>
+            <td class="ReportTableValueCell">46</td>
+            <td class="ReportTableValueCell">5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22021</td>
+            <td class="ReportTableValueCell">43</td>
+            <td class="ReportTableValueCell">5.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22022</td>
+            <td class="ReportTableValueCell">46</td>
+            <td class="ReportTableValueCell">5.1</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22023</td>
+            <td class="ReportTableValueCell">48</td>
+            <td class="ReportTableValueCell">4.9</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22024</td>
+            <td class="ReportTableValueCell">46</td>
+            <td class="ReportTableValueCell">5.1</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22025</td>
+            <td class="ReportTableValueCell">53</td>
+            <td class="ReportTableValueCell">51</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22026</td>
+            <td class="ReportTableValueCell">57</td>
+            <td class="ReportTableValueCell">48</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22027</td>
+            <td class="ReportTableValueCell">55</td>
+            <td class="ReportTableValueCell">49</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22028</td>
+            <td class="ReportTableValueCell">50</td>
+            <td class="ReportTableValueCell">51</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">10</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22029</td>
+            <td class="ReportTableValueCell">39</td>
+            <td class="ReportTableValueCell">5.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22030</td>
+            <td class="ReportTableValueCell">53</td>
+            <td class="ReportTableValueCell">4.7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22031</td>
+            <td class="ReportTableValueCell">41</td>
+            <td class="ReportTableValueCell">5.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22032</td>
+            <td class="ReportTableValueCell">39</td>
+            <td class="ReportTableValueCell">5.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22033</td>
+            <td class="ReportTableValueCell">41</td>
+            <td class="ReportTableValueCell">5.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22034</td>
+            <td class="ReportTableValueCell">50</td>
+            <td class="ReportTableValueCell">4.8</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22035</td>
+            <td class="ReportTableValueCell">61</td>
+            <td class="ReportTableValueCell">47</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22036</td>
+            <td class="ReportTableValueCell">61</td>
+            <td class="ReportTableValueCell">47</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22037</td>
+            <td class="ReportTableValueCell">64</td>
+            <td class="ReportTableValueCell">45</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22038</td>
+            <td class="ReportTableValueCell">60</td>
+            <td class="ReportTableValueCell">45</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">12</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22039</td>
+            <td class="ReportTableValueCell">32</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22040</td>
+            <td class="ReportTableValueCell">32</td>
+            <td class="ReportTableValueCell">6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22041</td>
+            <td class="ReportTableValueCell">28</td>
+            <td class="ReportTableValueCell">6.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22042</td>
+            <td class="ReportTableValueCell">22</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22043</td>
+            <td class="ReportTableValueCell">19</td>
+            <td class="ReportTableValueCell">7.7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22044</td>
+            <td class="ReportTableValueCell">22</td>
+            <td class="ReportTableValueCell">7.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22045</td>
+            <td class="ReportTableValueCell">27</td>
+            <td class="ReportTableValueCell">68</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22046</td>
+            <td class="ReportTableValueCell">28</td>
+            <td class="ReportTableValueCell">68</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22047</td>
+            <td class="ReportTableValueCell">26</td>
+            <td class="ReportTableValueCell">69</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22048</td>
+            <td class="ReportTableValueCell">22</td>
+            <td class="ReportTableValueCell">71</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">13</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22049</td>
+            <td class="ReportTableValueCell">70</td>
+            <td class="ReportTableValueCell">3.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22050</td>
+            <td class="ReportTableValueCell">79</td>
+            <td class="ReportTableValueCell">3.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22051</td>
+            <td class="ReportTableValueCell">80</td>
+            <td class="ReportTableValueCell">3.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22052</td>
+            <td class="ReportTableValueCell">63</td>
+            <td class="ReportTableValueCell">4.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22053</td>
+            <td class="ReportTableValueCell">50</td>
+            <td class="ReportTableValueCell">4.7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22054</td>
+            <td class="ReportTableValueCell">57</td>
+            <td class="ReportTableValueCell">4.4</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22055</td>
+            <td class="ReportTableValueCell">66</td>
+            <td class="ReportTableValueCell">44</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22056</td>
+            <td class="ReportTableValueCell">63</td>
+            <td class="ReportTableValueCell">46</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22057</td>
+            <td class="ReportTableValueCell">55</td>
+            <td class="ReportTableValueCell">49</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22058</td>
+            <td class="ReportTableValueCell">48</td>
+            <td class="ReportTableValueCell">52</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">14</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22059</td>
+            <td class="ReportTableValueCell">32</td>
+            <td class="ReportTableValueCell">6.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22060</td>
+            <td class="ReportTableValueCell">34</td>
+            <td class="ReportTableValueCell">5.7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22061</td>
+            <td class="ReportTableValueCell">35</td>
+            <td class="ReportTableValueCell">5.9</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22062</td>
+            <td class="ReportTableValueCell">30</td>
+            <td class="ReportTableValueCell">6.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22063</td>
+            <td class="ReportTableValueCell">28</td>
+            <td class="ReportTableValueCell">6.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22064</td>
+            <td class="ReportTableValueCell">28</td>
+            <td class="ReportTableValueCell">6.8</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22065</td>
+            <td class="ReportTableValueCell">27</td>
+            <td class="ReportTableValueCell">68</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22066</td>
+            <td class="ReportTableValueCell">26</td>
+            <td class="ReportTableValueCell">69</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22067</td>
+            <td class="ReportTableValueCell">25</td>
+            <td class="ReportTableValueCell">70</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22068</td>
+            <td class="ReportTableValueCell">23</td>
+            <td class="ReportTableValueCell">70</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">15</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22009</td>
+            <td class="ReportTableValueCell">46</td>
+            <td class="ReportTableValueCell">4.8</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22010</td>
+            <td class="ReportTableValueCell">60</td>
+            <td class="ReportTableValueCell">4.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22011</td>
+            <td class="ReportTableValueCell">65</td>
+            <td class="ReportTableValueCell">4.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22012</td>
+            <td class="ReportTableValueCell">66</td>
+            <td class="ReportTableValueCell">4.1</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22013</td>
+            <td class="ReportTableValueCell">54</td>
+            <td class="ReportTableValueCell">4.5</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22014</td>
+            <td class="ReportTableValueCell">54</td>
+            <td class="ReportTableValueCell">4.6</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22015</td>
+            <td class="ReportTableValueCell">66</td>
+            <td class="ReportTableValueCell">44</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22016</td>
+            <td class="ReportTableValueCell">69</td>
+            <td class="ReportTableValueCell">43</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">22017</td>
+            <td class="ReportTableValueCell">67</td>
+            <td class="ReportTableValueCell">44</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">22018</td>
+            <td class="ReportTableValueCell">55</td>
+            <td class="ReportTableValueCell">49</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">1</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21919</td>
+            <td class="ReportTableValueCell">20</td>
+            <td class="ReportTableValueCell">7.3</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">1</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21920</td>
+            <td class="ReportTableValueCell">22</td>
+            <td class="ReportTableValueCell">7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">2</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21921</td>
+            <td class="ReportTableValueCell">23</td>
+            <td class="ReportTableValueCell">6.9</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">3</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21922</td>
+            <td class="ReportTableValueCell">25</td>
+            <td class="ReportTableValueCell">6.7</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">4</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21923</td>
+            <td class="ReportTableValueCell">21</td>
+            <td class="ReportTableValueCell">7.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">5</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21924</td>
+            <td class="ReportTableValueCell">22</td>
+            <td class="ReportTableValueCell">7.2</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">6</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21925</td>
+            <td class="ReportTableValueCell">20</td>
+            <td class="ReportTableValueCell">72</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">7</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21926</td>
+            <td class="ReportTableValueCell">22</td>
+            <td class="ReportTableValueCell">71</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">8</td>
+          </tr>
+          <tr class="ReportDetailsEvenDataRow">
+            <td class="ReportTableValueCell">21927</td>
+            <td class="ReportTableValueCell">21</td>
+            <td class="ReportTableValueCell">73</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">9</td>
+          </tr>
+          <tr class="ReportDetailsOddDataRow">
+            <td class="ReportTableValueCell">21928</td>
+            <td class="ReportTableValueCell">23</td>
+            <td class="ReportTableValueCell">70</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">2016-11-16 12:19:48.88387+03</td>
+            <td class="ReportTableValueCell">11</td>
+            <td class="ReportTableValueCell">160</td>
+            <td class="ReportTableValueCell">10</td>
+          </tr>
+        </table>
+      </div>
+      <br />
+      <p class="ReportTableInfo">150 rows with 8 columns retrieved.</p>
+      <pre class="ReportSQL">select * from variables where "indexId"=160 --and "yearId"&lt;7</pre>
+    </div>
+    <div id="ReportFooter">
+Report generated by <a href="http://www.pgadmin.org/">pgAdmin III</a></div>
+    <br />
+  </body>
+</html>

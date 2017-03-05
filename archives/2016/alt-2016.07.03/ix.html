@@ -1,0 +1,117 @@
+<html lang="en-KW">
+<head>
+<style>
+td{padding:15px; border:1px solid black; border-radius:5px; }
+x-table{border:1px solid black; border-radius:10px; }
+
+.stylDiv{
+border:1px solid blue;
+background:#e0e0ff;
+border-radius:15px; 
+float:left;
+}
+.stylLI{
+margin:5px;
+padding:5px;
+line-height:12px;
+}
+</style>
+<script type="text/javascript" src="d3.v3.m.js"></script>
+<script type="text/javascript" src="sys.js"></script>
+    <link href="nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="nv.d3.js"></script>
+<script>
+
+f=function f(){
+	var rows=document.getElementById('x').value.split('\n')
+	,a=[],row
+	for(row=0;row<rows.length;row++)
+		a[row]=rows[row].split('\t');
+	document.getElementById('out').value=JSON.stringify(a);
+}//function f
+
+
+db={//levels: Sector , Indicators , Country , Year , Rank/Value
+
+sectors:{}//sectors
+
+,dbLvls:['indi','cntry','yr','vars']//'sectr',
+
+}//db
+
+window.xls=
+xls={}
+
+xls.regions={
+//dom-build tabs-gui , for sectors
+ //dom-build prms: sectors/xls-files , sheets , regions
+ //dom-build tree of indicators
+//dom-build addition-list, for collection of user defined input-set of parameters 
+sectors:{
+/*
+
+desc	'Description '!$A$1:$C$48
+data2014indi	'GCI 2014-2015'!$A$3:$A$165
+data2014	'GCI 2014-2015'!$C$3:$AF$165
+data2015indi	'GCI 2015-2016'!$A$3:$A$165
+data2015cols	'GCI 2015-2016'!$C$1:$AF$2
+data2015	'GCI 2015-2016'!$C$3:$AF$165
+indicatorsIndex	'Notes and Sources'!$A$4:$A$165
+index	Sheet1!$A$1:$D$29
+
+data2014cols	'GCI 2014-2015'!$C$1:$AF$2
+data2013indi	'GCI 2013-2014'!$A$3:$B$165
+data2013cols	'GCI 2013-2014'!$C$1:$AF$2
+data2013	'GCI 2013-2014'!$C$3:$AF$165
+data2012	'GCI 2012-2013'!$A$3:$B$165
+data2013	'GCI 2013-2014'!$C$3:$AF$165
+
+*/
+gci:[{regionName:'',
+	sheets:['GCI 2006-2007','GCI 2007-2008','GCI 2008-2009'
+		,'GCI 2009-2010','GCI 2010-2011','GCI 2011-2012'
+		,'GCI 2012-2013','GCI 2013-2014','GCI 2014-2015','GCI 2015-2016']
+}
+]//xls.regions.sectors.gci
+
+}
+,bldRegion:function xlsRegionBld(p,reg)
+{
+}//xls.regions.bld
+//bldSheet
+}//xls.regions
+
+</script>
+
+
+<script src="xls.corruption.js"></script>
+<script src="xls.economicFreedom.js"></script>
+<script src="xls.edb.js"></script>
+<script src="xls.gci.js"></script>
+<script src="xls.HumanDevelopment.js"></script>
+<script src="xls.Prosperity.js"></script>
+<script src="xls.WorldHappiness.js"></script>
+</head>
+<body >
+	<div id="GCI.lookups"></div>
+	<button onclick="sys.clkQuery(event)">query</button>
+	<input type="checkbox" id="autoQuery"/><label for="autoQuery">Auto Query</label>
+	<br/><span id="filterHistory"></span><hr/>
+	<div id="GCI.output"></div>
+	<script>
+			xls.gci.meta.convert(xls.gci,db.sectors.gci)
+			/*for(var i in xls.gci)
+				sys.cc('GCI Data-Sheet '+i
+					,sys.did('gciContent')
+					,sys.bldTbl({
+						 a:{border:1}
+						,c:xls.gci[i].a || xls.gci[i].b
+						}
+					)
+					,'float:left'
+				)*/
+			sys.bldLists('GCI',db.sectors.gci.lookup)
+	</script>
+
+</body>
+</html>
