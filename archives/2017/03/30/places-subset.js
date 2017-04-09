@@ -92,7 +92,7 @@ CYM:[-81,19,"Cayman Islands","KY"]//19°20′N 81°24′W
 ,GGY:[-2.585278,49.465691,"Guernsey","GG"]
 ,PSE:[34.308825,31.354676,"Palestinian Territories","PS"]
 ,BEL:[4.469936,50.503887,"Belgium","BE"]
-,PAN:[-79.31868131868133, 9.326223697137353,"",""]
+,PAN:[-79.31868131868133, 9.326223697137353,"Panama","PN"]
 ,BHS:[	-77.39628,25.03428,"Bahamas","BS"]
 //,SGP:[,,"Singapore","SG"]
 ,AZE:[		47.576927,40.143105	,"Azerbaijan, Republic of","AZ"]

@@ -3,23 +3,9 @@
 	<style>
 		
 		.land {
-			fill: rgb(117, 87, 57);
+			fill: #999;
 			stroke-opacity: 1;
 		}
-	
-	.countries path {
-		stroke: rgb(80, 64, 39);
-		stroke-linejoin: round;
-		stroke-width:.5;
-		fill: rgb(117, 87, 57);
-		opacity: .1;
-	}
-	
-	.countries path:hover {
-		fill-opacity:.1;
-		stroke-width:1;
-		opacity: 1;
-	}
 	
 	.graticule {
 		fill: none;
@@ -32,6 +18,8 @@
 		font: 8px sans-serif;
 		fill: black;
 		opacity: .5;
+		
+		display:none;
 	}
 	
 	.noclicks { pointer-events:none; }
@@ -69,19 +57,18 @@
 			.on("mousemove", mousemove)
 			.on("mouseup", mouseup);
 			
-			var width = window.innerWidth,//960,
-			height = window.innerHeight/2,//500;
-			scale=width*.3,scale2=width*.1
+			var width = 960,
+			height = 500;
+			
 			var proj = d3.geo.orthographic()
 			.translate([width / 2, height / 2])
 			.clipAngle(90)
-			.scale(scale);
+			.scale(220);
 			
 			var sky = d3.geo.orthographic()
 			.translate([width / 2, height / 2])
 			.clipAngle(90)
-			.scale(scale+scale2);
-
+			.scale(300);
 			var graticule = d3.geo.graticule();
 			var path = d3.geo.path().projection(proj).pointRadius(2);
 			
@@ -89,7 +76,7 @@
 			.x(function(d) { return d[0] })
 			.y(function(d) { return d[1] })
 			.interpolate("cardinal")
-			.tension(0.1);
+			.tension(.0);
 			
 			var links = [],
 			arcLines = []
@@ -146,7 +133,7 @@
 				.attr("stop-opacity","0")
 				
 				svg.append("ellipse")
-				.attr("cx",width*.4 ).attr("cy",height*.85 )//440	450
+				.attr("cx", 440).attr("cy", 450)
 				.attr("rx", proj.scale()*.90)
 				.attr("ry", proj.scale()*.25)
 				.attr("class", "noclicks")
@@ -190,7 +177,7 @@
 				.selectAll("text").data(places.features)
 				.enter().append("text")
 				.attr("class", "label")
-				.text(function(d) { return d.properties.adm0name })
+				.text(function(d) { return d.properties.name })
 				
 				 svg.append("g").attr("class","countries")
 				   .selectAll("path")
@@ -276,7 +263,7 @@
 			var result = [ proj(source),
 						  sky(mid),
 						  proj(target) ]
-			return result;
+						  return result;
 		}
 		
 		
@@ -364,48 +351,6 @@ initFlux('outward')
 		</script>
 </head>
 <body>
-<h2 id="hdYr">Year: 2015</h2><input id="yrSlider" type ="range" min ="2009" max="2015" step ="1" value ="2015" list="steplist"
-	oninput="onSldYrInput(event,this)" 
-	onchange="onSldYrInput(event,this);app.generate()" >
-<datalist id="steplist">
-    <option>2009</option>
-    <option>2010</option>
-    <option>2011</option>
-    <option>2012</option>
-    <option>2013</option>
-    <option>2014</option>
-    <option>2015</option>
-</datalist>
-<hr/><h2 id="hdTop">Top Countries: 5</h2>
-<input id="tpSlider" type ="range" step ="1" value ="5" list="topSteplist" min="0" max="42"
-	oninput="onSldTopInput(event,this)" 
-	onchange="onSldTopInput(event,this);app.generate()" >
-<datalist id="topSteplist">
-    <option>Top 1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-    <option>10</option>
-    <option>15</option>
-    <option>20</option>
-    <option>25</option>
-    <option>30</option>
-    <option>All</option>
-</datalist>
-<hr/><h2 id="colorCatHd">Coloring categorization: Value</h2>
-<input id="clrSlider" type ="range" step="1" value="1" list="clrSteplist" min="1" max="5"
-	oninput="onClrCatInput(event,this)" 
-	onchange="onClrCatInput(event,this);app.generate()" >
-<datalist id="clrSteplist">
-    <option value="1">Value</option>
-    <option value="2">Percentages</option>
-    <option value="3">Rank</option>
-    <option value="4">Total-Value</option>
-    <option value="5">Total-Percentage</option>
-
-</datalist>
-
 Inward
 <div id="inward"></div>
 <hr/>
