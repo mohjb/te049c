@@ -1,0 +1,550 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+	<style>
+		
+		.land {
+			fill: rgb(117, 87, 57);
+			stroke-opacity: 1;
+		}
+	
+	.countries path {
+		stroke: rgb(80, 64, 39);
+		stroke-linejoin: round;
+		stroke-width:.5;
+		fill: rgb(117, 87, 57);
+		opacity: .1;
+	}
+	
+	.countries path:hover {
+		fill-opacity:.1;
+		stroke-width:1;
+		opacity: 1;
+	}
+	
+	.graticule {
+		fill: none;
+		stroke: black;
+		stroke-width:.5;
+		opacity:.2;
+	}
+	
+	.labels {
+		font: 8px sans-serif;
+		fill: black;
+		opacity: .5;
+	}
+	
+	.noclicks { pointer-events:none; }
+	
+	.point {  opacity:.6; }
+	
+	.arcs {
+		opacity:.1;
+		stroke: gray;
+		stroke-width: 3;
+	}
+	.flyers {
+		stroke-width:1;
+		opacity: .6;
+		stroke: darkred;
+	}
+	.arc, .flyer {
+		stroke-linejoin: round;
+		fill:none;
+	}
+	.arc { }
+	.flyer { }
+	.flyer:hover { }
+	
+		</style>
+	
+		<script src="d3.v3.min.js"></script>
+		<script src="queue.v1.min.js"></script>
+		<script src="topojson.v0.min.js"></script>
+		<script src="world-110m.js"></script>
+		<script src="places-subset.js"></script>
+		<script>
+			function initFlux(wrd){
+			d3.select(window)
+			.on("mousemove", mousemove)
+			.on("mouseup", mouseup);
+			
+			var width = window.innerWidth,//960,
+			height = window.innerHeight/2,//500;
+			scale=width*.3,scale2=width*.1
+			var proj = d3.geo.orthographic()
+			.translate([width / 2, height / 2])
+			.clipAngle(90)
+			.scale(scale);
+			
+			var sky = d3.geo.orthographic()
+			.translate([width / 2, height / 2])
+			.clipAngle(90)
+			.scale(scale+scale2);
+
+			var graticule = d3.geo.graticule();
+			var path = d3.geo.path().projection(proj).pointRadius(2);
+			
+			var swoosh = d3.svg.line()
+			.x(function(d) { return d[0] })
+			.y(function(d) { return d[1] })
+			.interpolate("cardinal")
+			.tension(0.1);
+			
+			var links = [],
+			arcLines = []
+			,body=d3.select(document.getElementById( wrd));
+			
+			var svg = body//d3.select("body")
+			.append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .on("mousedown", mousedown)
+			.on("touchstart", touchStart)
+			.on("touchmove", touchMove)//, false)
+			.on("touchend", touchEnd)//, false);   
+
+			//queue().defer(d3.json, "world-110m.json").defer(d3.json, "places-subset.json").await(ready);
+
+			function ready(error, world, places) {
+				window.flux={world:world,places:places}
+				var ocean_fill = svg.append("defs").append("radialGradient")
+				.attr("id", "ocean_fill")
+				.attr("cx", "75%")
+				.attr("cy", "25%");
+				ocean_fill.append("stop").attr("offset", "5%").attr("stop-color", "#ddf");
+				ocean_fill.append("stop").attr("offset", "100%").attr("stop-color", "#9ab");
+				
+				var globe_highlight = svg.append("defs").append("radialGradient")
+				.attr("id", "globe_highlight")
+				.attr("cx", "75%")
+				.attr("cy", "25%");
+				globe_highlight.append("stop")
+				.attr("offset", "5%").attr("stop-color", "#ffd")
+				.attr("stop-opacity","0.6");
+				globe_highlight.append("stop")
+				.attr("offset", "100%").attr("stop-color", "#ba9")
+				.attr("stop-opacity","0.2");
+				
+				var globe_shading = svg.append("defs").append("radialGradient")
+				.attr("id", "globe_shading")
+				.attr("cx", "55%")
+				.attr("cy", "45%");
+				globe_shading.append("stop")
+				.attr("offset","50%").attr("stop-color", "#9ab")
+				.attr("stop-opacity","0")
+				globe_shading.append("stop")
+				.attr("offset","100%").attr("stop-color", "#3e6184")//#505962
+				.attr("stop-opacity","0.3")
+				
+				var drop_shadow = svg.append("defs").append("radialGradient")
+				.attr("id", "drop_shadow")
+				.attr("cx", "50%")
+				.attr("cy", "50%");
+				drop_shadow.append("stop")
+				.attr("offset","20%").attr("stop-color", "#000")
+				.attr("stop-opacity",".5")
+				drop_shadow.append("stop")
+				.attr("offset","100%").attr("stop-color", "#000")
+				.attr("stop-opacity","0")
+				
+				svg.append("ellipse")
+				.attr("cx",width*.4 ).attr("cy",height*.85 )//440	450
+				.attr("rx", proj.scale()*.90)
+				.attr("ry", proj.scale()*.25)
+				.attr("class", "noclicks")
+				.style("fill", "url(#drop_shadow)");
+				
+				svg.append("circle")
+				.attr("cx", width / 2).attr("cy", height / 2)
+				.attr("r", proj.scale())
+				.attr("class", "noclicks")
+				.style("fill", "url(#ocean_fill)");
+				
+				svg.append("path")
+				.datum(topojson.object(world, world.objects.land))
+				.attr("class", "land")//noclicks
+				.attr("d", path);
+				
+				svg.append("path")
+				.datum(graticule)
+				.attr("class", "graticule noclicks")
+				.attr("d", path);
+				
+				svg.append("circle")
+				.attr("cx", width / 2).attr("cy", height / 2)
+				.attr("r", proj.scale())
+				.attr("class","noclicks")
+				.style("fill", "url(#globe_highlight)");
+				
+				svg.append("circle")
+				.attr("cx", width / 2).attr("cy", height / 2)
+				.attr("r", proj.scale())
+				.attr("class","noclicks")
+				.style("fill", "url(#globe_shading)");
+				
+				svg.append("g").attr("class","points")
+				.selectAll("text").data(places.features)
+				.enter().append("path")
+				.attr("class", "point")
+				.attr("d", path);
+				
+				svg.append("g").attr("class","labels")
+				.selectAll("text").data(places.features)
+				.enter().append("text")
+				.attr("class", "label")
+				.text(function(d) { return d.properties.adm0name })
+				
+				 svg.append("g").attr("class","countries")
+				   .selectAll("path")
+				     .data(topojson.object(world, world.objects.countries).geometries)
+				   .enter().append("path")
+				     .attr("d", path);
+				
+				position_labels();
+				// spawn links between cities as source/target coord pairs
+				/*places.features.forEach(function(a) {
+										places.features.forEach(function(b) {
+																if (a !== b) {
+																links.push({
+																		   source: a.geometry.coordinates,
+																		   target: b.geometry.coordinates
+																		   });
+																}
+																});
+										});*/
+				var a=places.features[0];
+				places.features.forEach(function(b) {
+					if (a !== b) {
+					links.push({
+						source: a.geometry.coordinates,
+						target: b.geometry.coordinates
+						});
+					}
+					});
+				
+				// build geoJSON features from links array
+				links.forEach(function(e,i,a) {
+					var feature =   { "type": "Feature", "geometry": 
+					{ "type": "LineString", "coordinates": [e.source,e.target] }}
+					arcLines.push(feature)
+					})
+					
+					svg.append("g").attr("class","arcs")
+					.selectAll("path").data(arcLines)
+					.enter().append("path")
+					.attr("class","arc")
+					.attr("d",path)
+					
+					svg.append("g").attr("class","flyers")
+					.selectAll("path").data(links)
+					.enter().append("path")
+					.attr("class","flyer")
+					.attr("d", function(d) { return swoosh(flying_arc(d)) })
+					
+					refresh();
+			}
+		
+		
+		function position_labels() {
+			var centerPos = proj.invert([width/2,height/2]);
+			
+			var arc = d3.geo.greatArc();
+			
+			svg.selectAll(".label")
+			.attr("text-anchor",function(d) {
+				  var x = proj(d.geometry.coordinates)[0];
+				  return x < width/2-20 ? "end" :
+				  x < width/2+20 ? "middle" :
+				  "start"
+				  })
+				  .attr("transform", function(d) {
+						var loc = proj(d.geometry.coordinates),
+						x = loc[0],
+						y = loc[1];
+						var offset = x < width/2 ? -5 : 5;
+						return "translate(" + (x+offset) + "," + (y-2) + ")"
+						})
+						.style("display",function(d) {
+							   var d = arc.distance({source: d.geometry.coordinates, target: centerPos});
+							   return (d > 1.57) ? 'none' : 'inline';
+							   })
+							   
+		}
+		
+		function flying_arc(pts) {
+			var source = pts.source,
+			target = pts.target;
+			
+			var mid = location_along_arc(source, target, .5);
+			var result = [ proj(source),
+						  sky(mid),
+						  proj(target) ]
+			return result;
+		}
+		
+		
+		
+		function refresh() {
+			svg.selectAll(".land").attr("d", path);
+			svg.selectAll(".countries path").attr("d", path);
+			svg.selectAll(".graticule").attr("d", path);
+			position_labels();
+			svg.selectAll(".point").attr("d", path);
+			
+			svg.selectAll(".arc").attr("d", path)
+			.attr("opacity", function(d) {
+				  return fade_at_edge(d)
+				  })
+				  
+				  svg.selectAll(".flyer")
+				  .attr("d", function(d) { return swoosh(flying_arc(d)) })
+				  .attr("opacity", function(d) {
+						return fade_at_edge(d)
+						})
+		}
+		
+		function fade_at_edge(d) {
+			var centerPos = proj.invert([width/2,height/2]),
+			arc = d3.geo.greatArc(),
+			start, end;
+			// function is called on 2 different data structures..
+			if (d.source) {
+				start = d.source,
+				end = d.target;
+			}
+			else {
+				start = d.geometry.coordinates[0];
+				end = d.geometry.coordinates[1];
+			}
+			
+			var start_dist = 1.57 - arc.distance({source: start, target: centerPos}),
+			end_dist = 1.57 - arc.distance({source: end, target: centerPos});
+			
+			var fade = d3.scale.linear().domain([-.1,0]).range([0,.1])
+			var dist = start_dist < end_dist ? start_dist : end_dist;
+			
+			return fade(dist)
+		}
+		
+		function location_along_arc(start, end, loc) {
+			var interpolator = d3.geo.interpolate(start,end);
+			return interpolator(loc)
+		}
+		
+		// modified from http://bl.ocks.org/1392560
+		var m0, o0;
+		function mousedown() {
+			m0 = [d3.event.pageX, d3.event.pageY];
+			o0 = proj.rotate();
+			d3.event.preventDefault();
+		}
+		function mousemove() {
+			if (m0) {
+				var m1 = [d3.event.pageX, d3.event.pageY]
+				, o1 = [o0[0] + (m1[0] - m0[0]) / 6, o0[1] + (m0[1] - m1[1]) / 6];
+				o1[1] = o1[1] > 30  ? 30  :
+				o1[1] < -30 ? -30 :
+				o1[1];
+				proj.rotate(o1);
+				sky.rotate(o1);
+				refresh();
+			}
+		}
+		function mouseup() {
+			if (m0) {
+				mousemove();
+				m0 = null;
+			}
+		}
+		function touchStart() {if(d3.event.touches.length>1)return true;
+			m0 = [d3.event.touches[0].pageX, d3.event.touches[0].pageY];
+			o0 = proj.rotate();
+			d3.event.preventDefault();
+		}
+		function touchMove() {if(d3.event.touches.length>1)return true;
+			if (m0) {
+				var m1 = [d3.event.touches[0].pageX, d3.event.touches[0].pageY]
+				, o1 = [o0[0] + (m1[0] - m0[0]) / 6, o0[1] + (m0[1] - m1[1]) / 6];
+				o1[1] = o1[1] > 30  ? 30  :
+				o1[1] < -30 ? -30 :
+				o1[1];
+				proj.rotate(o1);
+				sky.rotate(o1);
+				refresh();
+			}
+		}
+		function touchEnd() {
+			if (m0) {
+				touchMove();
+				m0 = null;
+			}
+		}
+ready({},world,places)
+
+}//initFlux
+
+window.onload = function (){
+initFlux('inward')
+initFlux('outward')
+}
+
+
+function onClrCatInput(e,t){
+	var v=t.value,va=['x','Value','Percentages','Rank','Total-Value','Total-Percentage']
+	var n=document.getElementById('colorCatHd')
+	n.innerHTML='Coloring categorization: '+va[v];
+	console.log('coloring:onInput'
+		,app.selection.clr=v
+		,document.getElementById('clrSteplist')
+		,app.selection.Clr=t);
+		//console.log('coloring:onchange',app.selection.clr=this.value,app.selection.Clr=this);
+}
+
+function onSldYrInput(e,t){
+	var v=t.value
+	var n=document.getElementById('hdYr')
+	n.innerHTML='Year: '+v;
+	app.selection.yr=v;}
+
+function onSldTopInput(e,t){
+	var v=t.value
+	var n=document.getElementById('hdTop')
+	n.innerHTML='Top Countries: '+v;
+	app.selection.top=v;}
+		</script>
+</head>
+<body>
+<h2 id="hdYr">Year: 2015</h2><input id="yrSlider" type ="range" min ="2009" max="2015" step ="1" 
+	value ="2015" list="steplist"
+	oninput="onSldYrInput(event,this)" 
+	onchange="onSldYrInput(event,this);generate()" >
+<datalist id="steplist">
+    <option>2009</option>
+    <option>2010</option>
+    <option>2011</option>
+    <option>2012</option>
+    <option>2013</option>
+    <option>2014</option>
+    <option>2015</option>
+</datalist>
+<hr/><h2 id="hdTop">Top Countries: 5</h2>
+<input id="tpSlider" type ="range" step ="1" value ="5" list="topSteplist" min="0" max="42"
+	oninput="onSldTopInput(event,this)" 
+	onchange="onSldTopInput(event,this);generate()" >
+<datalist id="topSteplist">
+    <option>Top 1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>10</option>
+    <option>15</option>
+    <option>20</option>
+    <option>25</option>
+    <option>30</option>
+    <option>All</option>
+</datalist>
+<hr/><h2 id="colorCatHd">Coloring categorization: Value</h2>
+<input id="clrSlider" type ="range" step="1" value="1" list="clrSteplist" min="1" max="5"
+	oninput="onClrCatInput(event,this)" 
+	onchange="onClrCatInput(event,this);generate()" >
+<datalist id="clrSteplist">
+    <option value="1">Value</option>
+    <option value="2">Percentages</option>
+    <option value="3">Rank</option>
+    <option value="4">Total-Value</option>
+    <option value="5">Total-Percentage</option>
+
+</datalist>
+
+Inward
+<div id="inward"></div>
+<hr/>
+
+Outward
+<div id="outward"></div>
+<span id="dbg">dbg</span>
+
+<span style="display:none">
+<pre id="inward" style="display:none"
+>	2009	2009	2009	2010	2010	2010	2011	2011	2011	2012	2012	2012	2013	2013	2013	2014	2014	2014	2015	2015	2015		Total	ISO
+Investment from:	Value	%	Rank	Value	%	Rank	Value	%	Rank	Value	%	Rank	Value	%	Rank	Value	%	Rank	Value	%	Rank			ISO
+Bahrain, Kingdom of	1514.4	32.9%	1	1578.5	13.3%	2	1623.1	10.7%	2	765.6	4.2%	2	1008.9	6.3%	2	1117.3	7.1%	2	1016.5	7%	2		8635.3	BHR
+Canada	7.7	0.2%	12				26.4	0.2%	11	27.6	0.2%	10											94.7	CAN
+Cayman Islands				13.7	0.1%	11	21.3	0.1%	13	8.0	0%	11	8.3	0.1%	11	8.4	0.1%	11	12.3	0.1%	11		129	CYM
+China, P.R.: Hong Kong																58.0	0.4%	8	55.9	0.4%	9		121.9	HKG
+Egypt																6.2	0%	13	5.4	0%	14		24.6	EGY
+France	53.5	1.2%	9	60.8	0.5%	9	55.2	0.4%	9	57.8	0.3%	9	57.1	0.4%	8	58.0	0.4%	8	59.9	0.4%	8		454.3	FRA
+Germany				4.5	0%	12	4.6	0%	14	6.9	0%	12	6.3	0%	12	6.3	0%	12	6.2	0%	13		96.8	DEU
+India	5.7	0.1%	13				4.4	0%	15	4.7	0%	13	13.1	0.1%	10	5.8	0%	14	6.5	0%	12		105.2	IND
+Iran, Islamic Republic of	3.0	0.1%	14	1.2	0%	15	1.2	0%	17	3.3	0%	14	3.4	0%	13	1.2	0%	15	1.2	0%	15		102.5	IRN
+Japan	107.3	2.3%	7	112.3	0.9%	7	114.2	0.8%	6														353.8	JPN
+Jersey	91.8	2%	8	96.2	0.8%	8	96.7	0.6%	7	116.7	0.6%	6	104.5	0.6%	6	131.0	0.8%	7	146.1	1%	6		825	JEY
+Korea, Republic of	25.8	0.6%	10	45.8	0.4%	10	46.3	0.3%	10	60.0	0.3%	8	48.9	0.3%	9	45.0	0.3%	10	29.0	0.2%	10		357.8	KOR
+Lebanon	15.6	0.3%	11	1.6	0%	14	22.1	0.1%	12	0.5	0%	16											92.8	LBN
+Oman	291.7	6.3%	5	352.7	3%	5	458.6	3%	5	432.7	2.4%	5	484.6	3%	5	522.9	3.3%	5	479.6	3.3%	5		3052.8	OMN
+Qatar	1461.8	31.8%	2	2553.8	21.5%	1	4133.1	27.2%	1	7170.4	39.5%	1	6205.3	38.5%	1	5251.2	33.4%	1	4431.8	30.3%	1		31214.4	QAT
+Saudi Arabia	420.9	9.1%	4	520.0	4.4%	4	561.1	3.7%	4	555.5	3.1%	4	595.6	3.7%	4	624.0	4%	4	614.8	4.2%	4		3915.9	SAU
+United Arab Emirates	483.0	10.5%	3	569.1	4.8%	3	624.8	4.1%	3	576.2	3.2%	3	639.4	4%	3	664.8	4.2%	3	617.3	4.2%	3		4192.6	ARE
+United Kingdom				3.5	0%	13	3.1	0%	16	2.6	0%	15											53.2	GBR
+United States	119.6	2.6%	6	121.0	1%	6	62.3	0.4%	8	63.6	0.4%	7	77.7	0.5%	7	131.6	0.8%	6	73.7	0.5%	7		689.5	USA
+Not Specified (including Confidential)				5848.6	49.2%		7317.4	48.2%		8292.4	45.7%		6844.2	42.5%		7101.4	45.1%		7047.6	48.3%			42451.6	BLM
+World	4601.8	100%		11883.5	100%		15176.0	100%		18144.3	100%		16097.1	100%		15733.0	100%		14603.8	100%			96239.5	SJM
+</pre>
+<pre id="outward" style="display:none"
+>	2009	2009	2009	2010	2010	2010	2011	2011	2011	2012	2012	2012	2013	2013	2013	2014	2014	2014	2015	2015	2015		Total	ISO
+Investment in:	Value	%	Rank	Value	%	Rank	Value	%	Rank	Value	%	Rank	Value	%	Rank	Value	%	Rank	Value	%	Rank			ISO
+Algeria	831.9	3.9%	10	839.4	3%	10	863.3	2.7%	13	868.3	2.8%	13	936.3	2.5%	13	916.7	2.7%	13	511.3	1.6%	15		5839.2	DZA
+Azerbaijan, Republic of							5.9	0%	38				5.8	0%	32								81.7	AZE
+Bahamas, The							24.6	0.1%	34														58.6	BHS
+Bahrain, Kingdom of	3280.7	15.6%	3	3324	11.8%	3	3907.3	12.1%	1	3470.3	11.2%	2	3354.8	9%	4	3314.7	9.7%	4	3491	11.1%	4		24159.8	BHR
+Belgium							61.8	0.2%	28														89.8	BEL
+Canada							27.3	0.1%	33														60.3	CAN
+Cayman Islands	397	1.9%	14	783.4	2.8%	12	1072.2	3.3%	10	1014.3	3.3%	10	6177.3	16.6%	1	4760.8	13.9%	2	3986.7	12.6%	2		18240.7	CYM
+China, P.R.: Hong Kong													0.8	0%	35	2.8	0%	32	1.8	0%	33		72.4	HKG
+China, P.R.: Mainland	43.5	0.2%	28	0.1	0%	32	285	0.9%	18														406.6	CHN
+Denmark				5.7	0%	31	4.5	0%	39	10	0%	33	23.3	0.1%	29								175.5	DNK
+Egypt	1144.7	5.4%	5	1190.8	4.2%	7	1343.2	4.2%	7	1009.4	3.3%	11	963.3	2.6%	12	1129.9	3.3%	11	1226.9	3.9%	8		8061.2	EGY
+France	45.1	0.2%	27				83.4	0.3%	27	32.6	0.1%	28	47.2	0.1%	26	23.6	0.1%	30	19.2	0.1%	30		389.1	FRA
+Germany	45.5	0.2%	26	45	0.2%	28	52.3	0.2%	31	192.9	0.6%	20	188.6	0.5%	20	158.7	0.5%	21	69.4	0.2%	23		898.4	DEU
+Guernsey	122.3	0.6%	19	133.7	0.5%	19	129.8	0.4%	25	130.8	0.4%	24											603.6	GGY
+India							7.2	0%	37	15.4	0%	32	5.3	0%	33	29.6	0.1%	29	21.6	0.1%	29		210.1	IND
+Indonesia	25.8	0.1%	30	51.1	0.2%	26	60.8	0.2%	29	4.3	0%	34	142.7	0.4%	22	136.8	0.4%	23	113.9	0.4%	22		699.4	IDN
+Iraq	1173.8	5.6%	4	3346.5	11.9%	2	2946.4	9.1%	4	3250.1	10.5%	3	3404.4	9.2%	3	3469	10.1%	3	3558.9	11.3%	3		21168.1	IRQ
+Isle of Man				45.8	0.2%	27	43.1	0.1%	32	96.2	0.3%	26	68.4	0.2%	24	63.6	0.2%	25	58.8	0.2%	26		509.9	IMN
+Jersey	178.4	0.8%	17	163.2	0.6%	16	164.2	0.5%	22	164.3	0.5%	21	37.2	0.1%	28	52.3	0.2%	26	62.8	0.2%	24		952.4	JEY
+Jordan	1028.7	4.9%	6	1560.8	5.5%	6	1546.1	4.8%	6	1282.2	4.1%	7	1326.9	3.6%	7	1571.1	4.6%	7	1124.5	3.6%	10		9479.3	JOR
+Lebanon	102.1	0.5%	20	85.8	0.3%	23	180.8	0.6%	20	87.7	0.3%	27	236.1	0.6%	19	231.3	0.7%	19	220.5	0.7%	18		1272.3	LBN
+Luxembourg	2.4	0%	32	0.1	0%	32	0.1	0%	41	0.1	0%	36	0.1	0%	37	0.1	0%	36					216.9	LUX
+Malaysia	751.2	3.6%	11	875.4	3.1%	9	769.4	2.4%	14	528	1.7%	17	601.7	1.6%	16	679.4	2%	14	822.5	2.6%	13		5108.6	MYS
+Maldives	87.9	0.4%	23	128.4	0.5%	21	137.4	0.4%	23	144.3	0.5%	22											587	MDV
+Malta							735.9	2.3%	15	746	2.4%	14	158.7	0.4%	21	130.8	0.4%	24	59.8	0.2%	25		1905.2	MLT
+Mauritania																186.5	0.5%	20	163.8	0.5%	20		370.3	MRT
+Morocco	220.5	1%	16	143.5	0.5%	18	207.5	0.6%	19	194.9	0.6%	19	285.7	0.8%	17	286.4	0.8%	17	281.3	0.9%	16		1725.8	MAR
+Netherlands	3389.8	16.1%	1	2257.3	8%	5	3396.8	10.5%	3	956.1	3.1%	12	1085	2.9%	10	1060.1	3.1%	12	1020.1	3.2%	11		13208.2	NLD
+Netherlands Antilles	0.4	0%	34																				34.4	ANT
+Norway																2.4	0%	33	2.3	0%	32		37.7	NOR
+Oman	164.2	0.8%	18	154.1	0.5%	17	176.8	0.5%	21	213.5	0.7%	18	285.1	0.8%	18	260.9	0.8%	18	252	0.8%	17		1616.6	OMN
+Pakistan	99.3	0.5%	21	126.3	0.4%	22	133.1	0.4%	24	141.2	0.5%	23	122.7	0.3%	23	147.7	0.4%	22	164	0.5%	19		1069.3	PAK
+Panama				12.9	0%	30	18.7	0.1%	35	18.5	0.1%	31	18.7	0.1%	30								194.8	PAN
+Qatar	999.5	4.7%	7	417.9	1.5%	14	501.4	1.6%	16	745.8	2.4%	15	786.5	2.1%	14	608.3	1.8%	16	135.4	0.4%	21		4276.8	QAT
+Saudi Arabia	3311.8	15.7%	2	3639.2	12.9%	1	3662.2	11.4%	2	4364.5	14.1%	1	5395.5	14.5%	2	5126.4	14.9%	1	4672.9	14.8%	1		30181.5	SAU
+Singapore	14.8	0.1%	31	14.3	0.1%	29	17.6	0.1%	36	31.9	0.1%	29	37.8	0.1%	27	46.3	0.1%	27	56.4	0.2%	27		398.1	SGP
+South Africa							0.9	0%	40	0.9	0%	35	0.7	0%	36	0.6	0%	35					149.1	ZAF
+Sudan	660.9	3.1%	12	2482.7	8.8%	4	868	2.7%	12	1196.5	3.9%	8	1275.5	3.4%	8	1421.3	4.1%	8	1214.6	3.8%	9		9171.5	SDN
+Switzerland	59.9	0.3%	25																				84.9	CHE
+Syrian Arab Republic	34.3	0.2%	29	57.8	0.2%	25	60.8	0.2%	29	21.1	0.1%	30	1.4	0%	34	1.2	0%	34	1.1	0%	34		358.7	SYR
+Tunisia	222.6	1.1%	15	416.1	1.5%	15	1953.7	6.1%	5	2022.9	6.5%	4	2122.8	5.7%	5	1774.8	5.2%	6	1565.7	5%	6		10128.6	TUN
+Turkey	470.5	2.2%	13	691.7	2.5%	13	1203.1	3.7%	8	1432.8	4.6%	6	1551.3	4.2%	6	2089.9	6.1%	5	1947.4	6.2%	5		9437.7	TUR
+United Arab Emirates	847	4%	9	794	2.8%	11	922.4	2.9%	11	1436.1	4.6%	5	1065.3	2.9%	11	1215.3	3.5%	9	1532.8	4.9%	7		7868.9	ARE
+United Kingdom	940.1	4.5%	8	940.3	3.3%	8	1120	3.5%	9	1169.7	3.8%	9	1253.3	3.4%	9	1135.1	3.3%	10	991.2	3.1%	12		7602.7	GBR
+United States	85.1	0.4%	24	70.3	0.2%	24	360.4	1.1%	17	717.3	2.3%	16	634.6	1.7%	15	661.2	1.9%	15	741.6	2.3%	14		3381.5	USA
+Virgin Islands, British	0	0%	35	0	0%	34	0	0%	42	0	0%	37	10	0%	31	10.6	0%	31	9.1	0%	31		239.7	VGB
+West Bank and Gaza	93.8	0.4%	22	130.7	0.5%	20	127.5	0.4%	26	126.3	0.4%	25	50.6	0.1%	25	39	0.1%	28	33.1	0.1%	28		747	PSE
+Yemen, Republic of	0.7	0%	33																				33.7	YEM
+Not Specified (including Confidential)	216	1%		3260.7	11.6%		3067.3	9.5%		3186.2	10.3%		3491	9.4%		1564.6	4.6%		1442.7	4.6%			16228.5	BLM
+World	21092.3	100%		28189.2	100%		32250.4	100%		31023.3	100%		37152.5	100%		34309.4	100%		31577.1	100%			215594.2	SJM
+</pre>
+</span>
+</body></html>

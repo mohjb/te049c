@@ -107,7 +107,7 @@ window.app=app={db:{}
 	,clr=sel.clr;
 	if(tp=='All')tp=w.cntrsCount
 	else if(!tp)tp=sel.top;while(!dy[tp] && tp>0)tp--
-	var dataset=w.dataset={}
+	var dataset=w.dataset={};places.features=[app.features[0]]
 	//if(!w.paletteScale)
 		w.paletteScale=d3.scale.linear()
 			.domain([
@@ -125,9 +125,10 @@ window.app=app={db:{}
 				:1
 				])//minValue,maxValue
 			.range(["#EFEFFF","#02386F"]); // blue color
+	function findFeaturedCountry(iso){for(var i=1;i<app.features.length;i++)if(app.features[i].adm0_a3==iso)return app.features[i];}
 	for(var i=1;i<=tp;i++){
 		var c=dy[i],b;if(c){
-			dataset[c.iso]=c
+			dataset[c.iso]=c;places.features.push(findFeaturedCountry(c.iso))
 
 			c.link=b={strokeColor:c.fillColor= w.paletteScale(
 			clr==1||clr==4?c.Value
@@ -166,6 +167,7 @@ window.app=app={db:{}
  }//db2Map
 
  ,init:window.onload=function(){app.db=app.initDB()
+ app.features=places.features;
 	app.generate()}
 	
 	,onClrCatInput:
@@ -321,7 +323,7 @@ function onSldTopInput(e,t){
 		.selectAll("text").data(places.features)
 		.enter().append("text")
 		.attr("class", "label")
-		.text(function(d) { return d.properties.adm0name })
+		.text(function(d) { return (d&&d.properties.adm0name)||"" })
 		
 		 svg.append("g").attr("class","countries")
 		   .selectAll("path")
@@ -342,7 +344,7 @@ function onSldTopInput(e,t){
 														});
 								});*/
 		var a=places.features[0];
-		places.features.forEach(function(b) {
+		places.features.forEach(function(b) {if(!b)return '';
 			if (a !== b && w.dataset[ b.properties.adm0_a3 ]) {
 			links.push({
 				source: a.geometry.coordinates,
@@ -379,20 +381,20 @@ function onSldTopInput(e,t){
 		var arc = d3.geo.greatArc();
 		
 		svg.selectAll(".label")
-		.attr("text-anchor",function(d) {
+		.attr("text-anchor",function(d) {if(!d)return '';
 			  var x = proj(d.geometry.coordinates)[0];
 			  return x < width/2-20 ? "end" :
 			  x < width/2+20 ? "middle" :
 			  "start"
 			  })
-			  .attr("transform", function(d) {
+			  .attr("transform", function(d) {if(!d)return '';
 					var loc = proj(d.geometry.coordinates),
 					x = loc[0],
 					y = loc[1];
 					var offset = x < width/2 ? -5 : 5;
 					return "translate(" + (x+offset) + "," + (y-2) + ")"
 					})
-					.style("display",function(d) {
+					.style("display",function(d) {if(!d)return 'none';
 						   var d = arc.distance({source: d.geometry.coordinates, target: centerPos});
 						   return (d > 1.57) ? 'none' : 'inline';
 						   })
